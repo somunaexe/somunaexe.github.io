@@ -5,8 +5,23 @@
     <link rel="icon" type="image/png" href="/assets/flapjack.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
-    <script type="module" crossorigin src="/assets/index-CabRwxgt.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D8oSVFc6.css">
+    <script>
+      // Apply the saved theme before first paint so there is no flash of the wrong one.
+      (function () {
+        var ids = ['light', 'bulfighter-light', 'bulwriter-light', 'bulwriter-dark', 'bulfighter-dark', 'dark'];
+        var theme = 'dark';
+        try {
+          var saved = localStorage.getItem('portfolio:theme');
+          if (ids.indexOf(saved) !== -1) theme = saved;
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute('data-theme', theme);
+        root.setAttribute('data-mode', theme.indexOf('light') !== -1 ? 'light' : 'dark');
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/main-JnFaC4vf.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/ThemeSlider-CjVjNTVW.js">
+    <link rel="stylesheet" crossorigin href="/assets/ThemeSlider-1X2ez3Ip.css">
   </head>
   <body>
     <div id="root"></div>
